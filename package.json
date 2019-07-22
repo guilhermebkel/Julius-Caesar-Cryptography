@@ -19,6 +19,8 @@
   "homepage": "https://github.com/guilhermebkel/Julius-Caesar-Cryptography#readme",
   "dependencies": {
     "dot-env": "0.0.1",
+    "dotenv": "^8.0.0",
+    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.1"
   }
 }
