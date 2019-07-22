@@ -7,7 +7,7 @@ module.exports = {
     decrypt
 }
 
-async function decrypt(data, casas){
+function decrypt(data, casas){
     console.log('Formatting data...')
     data = data.toLowerCase()
 
@@ -30,5 +30,23 @@ async function decrypt(data, casas){
 }
 
 async function encrypt(data, casas){
+    console.log('Formatting data...')
+    data = data.toLowerCase()
 
+    console.log('Encrypting data...')
+    const stringLength = data.length
+    let newData = []
+    let encryptedLetter 
+    for(let index = 0; index < stringLength; index++){
+        for(let letter in alphabet){
+            encryptedLetter = data[index].replace(`${alphabet[letter]}`, `${alphabet[(+(letter)+casas > alphabet.length) ? +(letter)+casas - alphabet.length : +(letter)+casas]}`)
+            if(data[index] === alphabet[letter]) break
+        }
+        newData = [...newData, encryptedLetter]
+    }
+
+    const encryptedData = newData.toString().replace(/,/g, '') 
+    console.log('[ Data encrypted ]', encryptedData)
+
+    return encryptedData
 }

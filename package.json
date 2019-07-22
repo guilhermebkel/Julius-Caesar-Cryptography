@@ -4,7 +4,8 @@
   "description": "[ Node.js ] Application used to encrypt and decrypt messages using the Julius Caesar Cryptography.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test": "mocha services/test.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "dotenv": "^8.0.0",
     "mocha": "^6.2.0",
     "node-fetch": "^2.6.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "sha1": "^1.1.1"
   }
 }

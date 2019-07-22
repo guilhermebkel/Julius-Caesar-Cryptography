@@ -10,7 +10,10 @@ async function boot(){
         const data = JSON.parse(require('fs').readFileSync('answer.json'))
 
         console.log('=> Decrypting data')
-        require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
+        const decryptedData = require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
+
+        console.log('=> Preparing production file')
+        //require('./services/file').buildFinishedFile(data, decryptedData)
     }
     else{
         console.log('Retrieving data from server...')
@@ -20,8 +23,12 @@ async function boot(){
         require('./services/file').saveDataOnFile(data)
 
         console.log('=> Decrypting data')
-        require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
+        const decryptedData = require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
+
+        require('./services/file').buildFinishedFile(data, decryptedData)
     }
+
+
 }
 
 boot()

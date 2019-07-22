@@ -1,8 +1,10 @@
 const fs = require('fs')
+const sha1 = require('sha1')
 
 module.exports = {
     saveDataOnFile,
     checkFileExistance,
+    buildFinishedFile,
 }
 
 function saveDataOnFile(data){
@@ -18,4 +20,14 @@ function saveDataOnFile(data){
 
 function checkFileExistance(){
     return fs.existsSync('answer.json')
+}
+
+function buildFinishedFile(data, cryptData){
+    const file = {
+        ...data,
+        decifrado: cryptData,
+        resumo_criptografico: sha1(cryptData),
+    }
+    
+    var formFile = new FormData()
 }
