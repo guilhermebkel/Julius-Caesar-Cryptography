@@ -30,4 +30,7 @@ async function submitResult(){
         .then(result => result.json())
         .then(data => console.log(data))
     }
+    catch(error){
+        console.error(error)
+    }
 }
