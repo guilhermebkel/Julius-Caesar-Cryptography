@@ -12,11 +12,13 @@ async function boot(){
         console.log('=> Decrypting data')
         const decryptedData = require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
 
-        console.log('=> Preparing production file')
-        const finishedFile = require('./services/file').buildFinishedFile(data, decryptedData)
-
-        console.log('=> Submiting file')
-        require('./services/api').submitResult(finishedFile)
+        if(process.env.NODE_ENV === 'production'){
+            console.log('=> Preparing production file')
+            require('./services/file').buildFinishedFile(data, decryptedData)
+    
+            console.log('=> Submiting file')
+            require('./services/api').submitResult()
+        }
     }
     else{
         console.log('Retrieving data from server...')
@@ -27,12 +29,14 @@ async function boot(){
 
         console.log('=> Decrypting data')
         const decryptedData = require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
-
-        console.log('=> Preparing production file')
-        const finishedFile = require('./services/file').buildFinishedFile(data, decryptedData)
-
-        console.log('=> Submiting file')
-        require('./services/api').submitResult(finishedFile)
+        
+        if(process.env.NODE_ENV === 'production'){
+            console.log('=> Preparing production file')
+            require('./services/file').buildFinishedFile(data, decryptedData)
+    
+            console.log('=> Submiting file')
+            require('./services/api').submitResult()
+        }
     }
 
 

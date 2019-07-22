@@ -1,4 +1,6 @@
 const fetch = require('node-fetch')
+const fs = require('fs')
+const FormData = require('form-data')
 
 module.exports = {
     getData,
@@ -19,14 +21,16 @@ async function getData(){
     }
 }
 
-async function submitResult(file){
+async function submitResult(){
     try{
-        const result = await fetch(process.env.API + '/submit-solution?token=' + process.env.TOKEN, {
+        console.log('Generating form data from json file...')
+        var formData = new FormData()
+        formData.append('answer', fs.createReadStream('answer.json'))
+
+        console.log('Submitting form data to server...')
+        await fetch(process.env.API + '/submit-solution?token=' + process.env.TOKEN, {
             method: 'POST',
-            body: file,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
+            body: formData,
         })
         .then(result => result.json())
         .then(data => console.log(data))
