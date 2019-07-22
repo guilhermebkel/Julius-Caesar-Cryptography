@@ -23,11 +23,13 @@ function checkFileExistance(){
 }
 
 function buildFinishedFile(data, cryptData){
-    const file = {
+    console.log('Generating SHA1 summary...')
+    const newData = {
         ...data,
         decifrado: cryptData,
         resumo_criptografico: sha1(cryptData),
     }
-    
-    return file
+
+    console.log('Saving new data on JSON file...')
+    saveDataOnFile(JSON.stringify(newData, null, 2))
 }
