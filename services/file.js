@@ -28,5 +28,6 @@ function buildFinishedFile(data, cryptData){
         decifrado: cryptData,
         resumo_criptografico: sha1(cryptData),
     }
+    
     return file
 }
