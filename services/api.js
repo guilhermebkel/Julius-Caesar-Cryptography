@@ -19,10 +19,12 @@ async function getData(){
     }
 }
 
-async function submitResult(){
+async function submitResult(file){
     try{
+        console.log(file)
         const result = await fetch(process.env.API + '/submit-solution?token=' + process.env.TOKEN, {
             method: 'POST',
+            body: file,
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
