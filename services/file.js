@@ -28,6 +28,5 @@ function buildFinishedFile(data, cryptData){
         decifrado: cryptData,
         resumo_criptografico: sha1(cryptData),
     }
-    
-    var formFile = new FormData()
+    return file
 }

@@ -13,7 +13,10 @@ async function boot(){
         const decryptedData = require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
 
         console.log('=> Preparing production file')
-        //require('./services/file').buildFinishedFile(data, decryptedData)
+        const finishedFile = require('./services/file').buildFinishedFile(data, decryptedData)
+
+        console.log('=> Submiting file')
+        require('./services/api').submitResult(finishedFile)
     }
     else{
         console.log('Retrieving data from server...')
@@ -25,7 +28,11 @@ async function boot(){
         console.log('=> Decrypting data')
         const decryptedData = require('./services/crypt').decrypt(data.cifrado, data.numero_casas)
 
-        require('./services/file').buildFinishedFile(data, decryptedData)
+        console.log('=> Preparing production file')
+        const finishedFile = require('./services/file').buildFinishedFile(data, decryptedData)
+
+        console.log('=> Submiting file')
+        require('./services/api').submitResult(finishedFile)
     }
 
 
