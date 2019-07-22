@@ -5,6 +5,7 @@ module.exports = {
     saveDataOnFile,
     checkFileExistance,
     buildFinishedFile,
+    readFile
 }
 
 function saveDataOnFile(data){
@@ -18,8 +19,12 @@ function saveDataOnFile(data){
     })
 }
 
-function checkFileExistance(){
-    return fs.existsSync('answer.json')
+function readFile(fileName){
+    return fs.readFileSync(fileName)
+}
+
+function checkFileExistance(fileName){
+    return fs.existsSync(fileName)
 }
 
 function buildFinishedFile(data, cryptData){
