@@ -1,0 +1,24 @@
+{
+  "name": "Julius-Caesar-Cryptography",
+  "version": "1.0.0",
+  "description": "[ Node.js ] Application used to encrypt and decrypt messages using the Julius Caesar Cryptography.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermebkel/Julius-Caesar-Cryptography.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilhermebkel/Julius-Caesar-Cryptography/issues"
+  },
+  "homepage": "https://github.com/guilhermebkel/Julius-Caesar-Cryptography#readme",
+  "dependencies": {
+    "dot-env": "0.0.1",
+    "nodemon": "^1.19.1"
+  }
+}
