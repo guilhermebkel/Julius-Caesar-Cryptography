@@ -20,9 +20,14 @@ async function getData(){
 }
 
 async function submitResult(){
-
-}
-
-async function saveData(){
-    
+    try{
+        const result = await fetch(process.env.API + '/submit-solution?token=' + process.env.TOKEN, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(result => result.json())
+        .then(data => console.log(data))
+    }
 }
